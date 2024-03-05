@@ -13,7 +13,6 @@ int main() {
     name.first = "zzz";
     name.last = "xxx";
     std::vector<std::shared_ptr<int>> vec = {std::make_shared<int>(10), std::make_shared<int>(20)};
-    vec.clear();
     home h(1, vec);
 
     person p{name, "744 Evergreen Terrace", 60, h};
@@ -34,6 +33,20 @@ int main() {
         std::cerr << "Unable to open file for writing." << std::endl;
         return 1;
     }
+
+    //
+    std::ifstream input_file("person.json");
+    nlohmann::json j_from_file;
+    if (input_file) {
+        input_file >> j_from_file;
+        ns::person p_from_file = j_from_file.get<ns::person>();
+        // 输出以验证反序列化结果
+        std::cout << "Deserialized address: " << p_from_file.get_address() << std::endl;
+    } else {
+        std::cerr << "Unable to open file for reading.\n";
+        return 1;
+    }
+
 
     return 0;
 }

@@ -17,6 +17,9 @@ public:
     person() = default;
     person(Name name_, std::string address_, int age_, home h_)
         : name(std::move(name_)), address(std::move(address_)), age(age_), h(h_) {}
+    std::string get_address() const { 
+        return address;
+     }
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(person, name, address, age, h)
 };
 }

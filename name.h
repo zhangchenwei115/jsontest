@@ -1,10 +1,11 @@
+#include "base_name.h"
 // name.h
-#include <string>
-#include "json.hpp"
-
-struct Name {
+class Name : public base_name {
+public:
     std::string first;
-    std::string last;
+
+    Name() = default;
+    Name(std::string first, std::string last) : base_name(std::move(last)), first(std::move(first)) {}
 
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(Name, first, last)
 };
