@@ -1,0 +1,12 @@
+{
+    "address": "744 Evergreen Terrace",
+    "age": 60,
+    "h": {
+        "a": 1,
+        "b": []
+    },
+    "name": {
+        "first": "zzz",
+        "last": "xxx"
+    }
+}
